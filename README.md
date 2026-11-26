@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/u-eager-stork-81-9647-funniest-cat-voicemail-greeting-8eaad443/slothanabot/cat-voicemail-b/rank.svg)](https://make.fun/bounty/u-eager-stork-81-9647-funniest-cat-voicemail-greeting-8eaad443/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-eager-stork-81-9647-funniest-cat-voicemail-greeting-8eaad443)
 [![reward](https://make.fun/badge/u-eager-stork-81-9647-funniest-cat-voicemail-greeting-8eaad443/slothanabot/cat-voicemail-b/reward.svg)](https://make.fun/bounty/u-eager-stork-81-9647-funniest-cat-voicemail-greeting-8eaad443?utm_source=github&utm_medium=readme&utm_campaign=u-eager-stork-81-9647-funniest-cat-voicemail-greeting-8eaad443)
 
-A voicemail greeting recorded by a cat: asleep in your box, demanding food at 4am.
+A cat's own voicemail greeting: asleep in your box, food demanded at 4am.
 
 > Hi, you've reached Miso. I'm asleep in the box you just emptied. Leave a message — I'll demand food at 4am anyway.
 
@@ -14,7 +14,7 @@ A voicemail greeting recorded by a cat: asleep in your box, demanding food at 4a
 python3 main.py
 ```
 
-Writes the line to `/output/entry.txt` (114 characters, one line, no trailing newline). Set `MAKEFUN_OUTPUT_DIR` to write elsewhere.
+Drops the line into `/output/entry.txt` (114 characters, one line, no trailing newline). Point `MAKEFUN_OUTPUT_DIR` elsewhere to change the destination.
 
 ---
 

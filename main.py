@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Funniest Cat Voicemail Greeting (account B).
 
-Writes one line to $MAKEFUN_OUTPUT_DIR/entry.txt,
-or /output/entry.txt when the variable is unset.
-Gate: UTF-8 text, 1-120 characters, not only whitespace, one line.
+Saves a single line under $MAKEFUN_OUTPUT_DIR/entry.txt,
+or under /output/entry.txt if that variable is not set.
+That line has to be UTF-8, exactly one line, 1-120 characters long,
+never blank, and contain no control characters.
 
-The joke: spoken aloud in the cat's own voice: the box it just claimed,
-the 4am food demand. A greeting a caller hears in seconds, with the
-punch landing before the beep.
+The bit: the cat leaves the greeting in its own voice — the box it
+just claimed, the 4am demand for food. A caller gets the joke in
+seconds, with the punchline arriving ahead of the beep.
 """
 
 import os
@@ -15,15 +16,20 @@ import os
 LINE = "Hi, you've reached Miso. I'm asleep in the box you just emptied. Leave a message — I'll demand food at 4am anyway."
 
 
+def fail(message: str) -> None:
+    """Stop the run with a short explanation of what went wrong."""
+    raise SystemExit(message)
+
+
 def build_line() -> str:
     """Return the line, validated as a single in-range line."""
     line = LINE.strip()
     if not line or "\n" in line or "\r" in line:
-        raise SystemExit("entry must be one non-empty line")
+        fail("entry must be one non-empty line")
     if any(ord(ch) < 32 for ch in line):
-        raise SystemExit("entry must not contain control characters")
+        fail("entry must not contain control characters")
     if not 1 <= len(line) <= 120:
-        raise SystemExit(f"entry is {len(line)} chars, must be 1-120")
+        fail(f"entry is {len(line)} chars, must be 1-120")
     return line
 
 
