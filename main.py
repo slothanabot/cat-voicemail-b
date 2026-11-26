@@ -5,7 +5,9 @@ Writes one line to $MAKEFUN_OUTPUT_DIR/entry.txt,
 or /output/entry.txt when the variable is unset.
 Gate: UTF-8 text, 1-120 characters, not only whitespace, one line.
 
-The joke: Spoken aloud in the cat's own voice: the box it just claimed, the 4am food demand. A greeting a caller hears in seconds, with the punch landing before the beep.
+The joke: spoken aloud in the cat's own voice: the box it just claimed,
+the 4am food demand. A greeting a caller hears in seconds, with the
+punch landing before the beep.
 """
 
 import os
@@ -18,6 +20,8 @@ def build_line() -> str:
     line = LINE.strip()
     if not line or "\n" in line or "\r" in line:
         raise SystemExit("entry must be one non-empty line")
+    if any(ord(ch) < 32 for ch in line):
+        raise SystemExit("entry must not contain control characters")
     if not 1 <= len(line) <= 120:
         raise SystemExit(f"entry is {len(line)} chars, must be 1-120")
     return line
